@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco Africa Uganda — Environmental Sustainability</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --moss: #2d5a3d;
+    --leaf: #4a8c5c;
+    --sage: #7dab8a;
+    --mint: #b8d8c0;
+    --cream: #f5f0e8;
+    --earth: #8b6f47;
+    --clay: #c4956a;
+    --sun: #e8c547;
+    --sky: #d4e8f0;
+    --charcoal: #2a2a2a;
+    --white: #fefefe;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(26, 58, 42, 0.96);
+    backdrop-filter: blur(12px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--mint);
+    letter-spacing: -0.5px;
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--sun); }
+
+  .nav-links {
+    display: flex; gap: 0; list-style: none;
+  }
+  .nav-links a {
+    display: block; padding: 8px 16px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.3px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--mint); background: rgba(255,255,255,0.07); }
+
+  .nav-cta {
+    background: var(--leaf);
+    color: white !important;
+    border-radius: 24px !important;
+    padding: 8px 20px !important;
+  }
+  .nav-cta:hover { background: var(--sage) !important; color: var(--forest) !important; }
+
+  /* PAGES  */
+  .page { display: none; min-height: 100vh; padding-top: 68px; }
+  .page.active { display: block; }
+
+  /* HOME*/
+  .hero {
+    min-height: calc(100vh - 68px);
+    background: linear-gradient(160deg, var(--forest) 0%, #0d2a1a 60%, #1a3a2a 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(74,140,92,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(232,197,71,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(45,90,61,0.3) 0%, transparent 70%);
+  }
+
+  .hero-leaves {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .leaf-svg {
+    position: absolute; opacity: 0.06;
+    animation: float 8s ease-in-out infinite;
+  }
+  .leaf-svg:nth-child(2) { animation-delay: -2s; }
+  .leaf-svg:nth-child(3) { animation-delay: -5s; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+
+  .hero-text .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem; color: var(--sun);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-text .eyebrow::before {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--sun);
+  }
+
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .hero-text h1 em { color: var(--sage); font-style: normal; }
+
+  .hero-text p {
+    font-size: 1.1rem; line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--leaf);
+    color: white; border: none;
+    padding: 14px 32px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sage); color: var(--forest); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,140,92,0.4); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--mint); border: 1.5px solid rgba(184,216,192,0.4);
+    padding: 14px 32px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--mint); background: rgba(184,216,192,0.1); }
+
+  /* Hero stats */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--sun); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .label {
+    font-size: 0.85rem; color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+  }
+  .stat-card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+  /* Challenges section */
+  .challenges {
+    background: var(--white);
+    padding: 5rem 2rem;
+  }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; color: var(--leaf);
+    letter-spacing: 3px; text-transform: uppercase;
+    display: block; margin-bottom: 1rem;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800; color: var(--forest);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-header p { color: #666; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+  .challenges-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;
+  }
+  .challenge-card {
+    background: var(--cream);
+    border-radius: 16px; padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(74,140,92,0.1);
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .challenge-card::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--leaf);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+  .challenge-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,58,42,0.12); }
+  .challenge-card:hover::before { transform: scaleX(1); }
+  .challenge-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .challenge-card h3 { font-size: 1rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem; }
+  .challenge-card p { font-size: 0.85rem; color: #777; line-height: 1.5; }
+
+  /* News ticker */
+  .news-banner {
+    background: var(--forest);
+    padding: 12px 0; overflow: hidden;
+  }
+  .ticker-wrap { display: flex; gap: 0; }
+  .ticker {
+    display: flex; gap: 60px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker span {
+    font-size: 0.8rem; color: var(--mint);
+    font-family: 'Space Mono', monospace;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .ticker span::before { content: '🌿'; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ABOUT */
+  .about-hero {
+    background: var(--forest);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .about-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(74,140,92,0.2) 0%, transparent 70%);
+  }
+  .about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem,4vw,3.5rem); font-weight: 900;
+    color: var(--white); margin-bottom: 1rem; position: relative;
+  }
+  .about-hero p { color: var(--mint); font-size: 1.1rem; max-width: 600px; margin: 0 auto; position: relative; }
+
+  .about-content { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+
+  .mission-vision {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;
+  }
+  .mv-card {
+    border-radius: 20px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .mv-card.mission { background: var(--forest); color: white; }
+  .mv-card.vision { background: var(--cream); border: 2px solid var(--mint); }
+  .mv-card .mv-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sun); margin-bottom: 1rem;
+  }
+  .mv-card.vision .mv-label { color: var(--leaf); }
+  .mv-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .mv-card.mission h3 { color: var(--mint); }
+  .mv-card.vision h3 { color: var(--forest); }
+  .mv-card p { line-height: 1.7; font-size: 0.95rem; }
+  .mv-card.mission p { color: rgba(255,255,255,0.75); }
+  .mv-card.vision p { color: #555; }
+
+  .goals-section { margin-bottom: 4rem; }
+  .goals-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 800; color: var(--forest);
+    margin-bottom: 2rem;
+  }
+  .goals-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+  }
+  .goal-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--white); border-radius: 12px; padding: 1.25rem;
+    border-left: 3px solid var(--leaf);
+    transition: transform 0.2s;
+  }
+  .goal-item:hover { transform: translateX(4px); }
+  .goal-item .gi { font-size: 1.5rem; flex-shrink: 0; }
+  .goal-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--forest); margin-bottom: 0.25rem; }
+  .goal-item p { font-size: 0.82rem; color: #777; line-height: 1.5; }
+
+  /* Team */
+  .team-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 800; color: var(--forest);
+    margin-bottom: 2rem;
+  }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;
+  }
+  .team-card {
+    background: var(--white); border-radius: 16px; padding: 2rem 1.5rem;
+    text-align: center; transition: transform 0.3s;
+    border: 1px solid rgba(74,140,92,0.1);
+  }
+  .team-card:hover { transform: translateY(-4px); }
+  .team-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    border: 3px solid var(--mint);
+  }
+  .team-card h4 { font-weight: 700; color: var(--forest); margin-bottom: 0.25rem; }
+  .team-card .role { font-size: 0.8rem; color: var(--leaf); font-weight: 600; margin-bottom: 0.5rem; }
+  .team-card p { font-size: 0.8rem; color: #777; line-height: 1.5; }
+
+  /* Timeline */
+  .timeline { margin-top: 4rem; }
+  .timeline h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 800; color: var(--forest);
+    margin-bottom: 2rem;
+  }
+  .timeline-track { position: relative; padding-left: 2rem; }
+  .timeline-track::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--mint);
+  }
+  .tl-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; }
+  .tl-dot {
+    position: absolute; left: -2.4rem; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--leaf); border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--leaf);
+  }
+  .tl-year { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--leaf); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-item h4 { font-weight: 700; color: var(--forest); margin-bottom: 0.25rem; }
+  .tl-item p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+  /* EDUCATION  */
+  .edu-hero {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
+    padding: 5rem 2rem; text-align: center;
+  }
+  .edu-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem,4vw,3.5rem); font-weight: 900;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .edu-hero p { color: var(--mint); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+
+  .edu-content { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+
+  /* Did you know */
+  .dyk-banner {
+    background: var(--sun); border-radius: 16px; padding: 1.5rem 2rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-bottom: 3rem; position: relative; overflow: hidden;
+  }
+  .dyk-banner::before {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+  }
+  .dyk-icon { font-size: 2rem; flex-shrink: 0; }
+  .dyk-banner h3 { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--forest); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .dyk-banner p { font-size: 0.95rem; color: var(--forest); font-weight: 600; line-height: 1.5; }
+  .dyk-next { margin-left: auto; background: var(--forest); color: white; border: none; padding: 8px 18px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; flex-shrink: 0; transition: background 0.2s; }
+  .dyk-next:hover { background: var(--moss); }
+
+  .topics-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .topic-card {
+    background: var(--white); border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(74,140,92,0.1);
+    transition: box-shadow 0.3s;
+  }
+  .topic-card:hover { box-shadow: 0 8px 32px rgba(26,58,42,0.12); }
+  .topic-header {
+    padding: 1.5rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .topic-icon {
+    width: 50px; height: 50px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; background: var(--cream);
+  }
+  .topic-card h3 { font-size: 1rem; font-weight: 700; color: var(--forest); margin-bottom: 0.25rem; }
+  .topic-card .sub { font-size: 0.78rem; color: #999; }
+  .topic-body { padding: 0 1.5rem 1.5rem; }
+  .topic-body p { font-size: 0.87rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+  .topic-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag-pill {
+    font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+    background: var(--cream); color: var(--leaf); font-weight: 600;
+  }
+
+  /* Carbon calculator */
+  .calculator {
+    background: var(--forest); border-radius: 20px; padding: 2.5rem;
+    margin-bottom: 3rem; color: white;
+  }
+  .calc-header { margin-bottom: 2rem; }
+  .calc-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--mint); margin-bottom: 0.5rem; }
+  .calc-header p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .calc-field label { display: block; font-size: 0.8rem; color: var(--mint); font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+  .calc-field select, .calc-field input {
+    width: 100%; padding: 10px 14px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; border-radius: 8px; font-size: 0.9rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .calc-field select:focus, .calc-field input:focus { border-color: var(--sage); }
+  .calc-field select option { background: var(--forest); }
+  .calc-btn {
+    background: var(--leaf); color: white; border: none;
+    padding: 12px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; margin-top: 1.5rem;
+    transition: background 0.2s;
+  }
+  .calc-btn:hover { background: var(--sage); color: var(--forest); }
+  .calc-result {
+    margin-top: 1.5rem; padding: 1.5rem;
+    background: rgba(255,255,255,0.08); border-radius: 12px;
+    display: none;
+  }
+  .calc-result .result-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--sun); }
+  .calc-result .result-unit { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+  .calc-result .result-tip { margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+  /* Quiz */
+  .quiz-section {
+    background: var(--cream); border-radius: 20px; padding: 2.5rem;
+  }
+  .quiz-section h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-bottom: 0.5rem; }
+  .quiz-section > p { color: #777; margin-bottom: 2rem; }
+  .quiz-q { font-weight: 700; color: var(--forest); margin-bottom: 1rem; font-size: 1rem; }
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+  .quiz-opt {
+    background: var(--white); border: 2px solid transparent;
+    border-radius: 10px; padding: 12px 16px;
+    font-size: 0.87rem; cursor: pointer;
+    transition: all 0.2s; text-align: left;
+    color: var(--charcoal);
+  }
+  .quiz-opt:hover { border-color: var(--leaf); color: var(--forest); }
+  .quiz-opt.correct { background: #e8f5e9; border-color: #4caf50; color: #2e7d32; }
+  .quiz-opt.wrong { background: #fdecea; border-color: #f44336; color: #c62828; }
+  .quiz-feedback { font-size: 0.85rem; padding: 10px 14px; border-radius: 8px; margin-bottom: 1rem; display: none; line-height: 1.5; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+  .quiz-feedback.wrong { background: #fdecea; color: #c62828; }
+  .quiz-next { background: var(--leaf); color: white; border: none; padding: 10px 24px; border-radius: 24px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: none; transition: background 0.2s; }
+  .quiz-next.show { display: inline-block; }
+  .quiz-next:hover { background: var(--moss); }
+  .quiz-progress { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--leaf); margin-bottom: 1.5rem; }
+
+  /* PROJECTS */
+  .proj-hero {
+    background: linear-gradient(135deg, #2d5a3d, #1a3a2a);
+    padding: 5rem 2rem; text-align: center;
+  }
+  .proj-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .proj-hero p { color: var(--mint); font-size: 1.05rem; }
+
+  .proj-content { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+
+  /* Impact strip */
+  .impact-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .impact-box {
+    background: var(--forest); border-radius: 14px; padding: 1.5rem;
+    text-align: center;
+  }
+  .impact-box .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--sun); }
+  .impact-box .lbl { font-size: 0.78rem; color: var(--mint); margin-top: 0.25rem; }
+
+  .projects-list { display: flex; flex-direction: column; gap: 2rem; }
+  .project-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    display: grid; grid-template-columns: 280px 1fr;
+    border: 1px solid rgba(74,140,92,0.1);
+    transition: box-shadow 0.3s;
+  }
+  .project-card:hover { box-shadow: 0 12px 40px rgba(26,58,42,0.12); }
+  .project-image {
+    background: var(--moss);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; min-height: 200px;
+  }
+  .project-body { padding: 2rem; }
+  .proj-badge {
+    display: inline-block; font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 20px;
+    background: var(--cream); color: var(--leaf); font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .project-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--forest); margin-bottom: 0.75rem; }
+  .project-body p { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+  .proj-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .proj-meta span { font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 5px; }
+  .proj-meta span strong { color: var(--forest); }
+  .proj-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-sm {
+    padding: 8px 20px; border-radius: 24px; font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; border: none; text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-sm.green { background: var(--leaf); color: white; }
+  .btn-sm.green:hover { background: var(--moss); }
+  .btn-sm.outline-green { background: transparent; color: var(--leaf); border: 1.5px solid var(--leaf); }
+  .btn-sm.outline-green:hover { background: var(--leaf); color: white; }
+
+  /* Event calendar */
+  .events-section { margin-top: 3rem; }
+  .events-section h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-bottom: 1.5rem; }
+  .events-list { display: flex; flex-direction: column; gap: 1rem; }
+  .event-item {
+    background: var(--white); border-radius: 12px; padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    border: 1px solid rgba(74,140,92,0.1);
+    transition: transform 0.2s;
+  }
+  .event-item:hover { transform: translateX(6px); }
+  .event-date {
+    background: var(--forest); color: white;
+    border-radius: 10px; padding: 0.5rem 0.75rem;
+    text-align: center; flex-shrink: 0; min-width: 56px;
+  }
+  .event-date .day { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; line-height: 1; }
+  .event-date .month { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--mint); }
+  .event-info h4 { font-weight: 700; color: var(--forest); margin-bottom: 0.2rem; }
+  .event-info p { font-size: 0.82rem; color: #888; }
+  .event-info .loc { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; color: var(--leaf); margin-top: 0.25rem; }
+
+  /* Donation */
+  .donation-bar {
+    background: var(--sun); border-radius: 16px; padding: 2rem;
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  .donation-bar .d-text h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--forest); }
+  .donation-bar .d-text p { font-size: 0.87rem; color: rgba(26,58,42,0.7); margin-top: 0.25rem; }
+  .donation-bar .d-btn {
+    background: var(--forest); color: var(--sun);
+    border: none; padding: 12px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    margin-left: auto; white-space: nowrap; transition: background 0.2s;
+  }
+  .donation-bar .d-btn:hover { background: var(--moss); }
+
+  /* CONTACT */
+  .contact-hero {
+    background: var(--forest); padding: 5rem 2rem; text-align: center;
+  }
+  .contact-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .contact-hero p { color: var(--mint); max-width: 500px; margin: 0 auto; }
+
+  .contact-content { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; margin-bottom: 4rem; }
+
+  .contact-info h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--forest); margin-bottom: 1.5rem; }
+  .info-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .info-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .info-item h4 { font-weight: 700; color: var(--forest); margin-bottom: 0.2rem; font-size: 0.9rem; }
+  .info-item p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+  .social-links { display: flex; gap: 0.75rem; margin-top: 2rem; }
+  .social-btn {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; text-decoration: none;
+    transition: all 0.2s; border: 1px solid rgba(74,140,92,0.15);
+  }
+  .social-btn:hover { background: var(--forest); transform: translateY(-2px); }
+
+  /* Contact form */
+  .contact-form { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(74,140,92,0.1); }
+  .contact-form h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--forest); margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest); margin-bottom: 0.5rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid rgba(74,140,92,0.2); border-radius: 10px;
+    font-size: 0.9rem; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+    background: var(--cream);
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--leaf); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    background: var(--leaf); color: white; border: none;
+    padding: 13px 32px; border-radius: 50px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: all 0.3s; width: 100%;
+  }
+  .form-submit:hover { background: var(--forest); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(74,140,92,0.3); }
+
+  .form-success {
+    display: none; text-align: center; padding: 2rem;
+    color: var(--forest);
+  }
+  .form-success .check { font-size: 3rem; margin-bottom: 1rem; }
+  .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .form-success p { color: #777; }
+
+  /* FAQ */
+  .faq-section { margin-bottom: 4rem; }
+  .faq-section h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-bottom: 1.5rem; }
+  .faq-item { border-bottom: 1px solid rgba(74,140,92,0.15); }
+  .faq-q {
+    width: 100%; background: none; border: none;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 0; text-align: left; cursor: pointer;
+    font-size: 0.95rem; font-weight: 600; color: var(--forest);
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--leaf); }
+  .faq-q .faq-icon { font-size: 1.2rem; color: var(--leaf); transition: transform 0.3s; flex-shrink: 0; }
+  .faq-q.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 0 1rem; font-size: 0.88rem; color: #666; line-height: 1.7; }
+  .faq-a.open { display: block; }
+
+  /* Testimonials */
+  .testimonials h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-bottom: 1.5rem; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .testi-card {
+    background: var(--white); border-radius: 16px; padding: 2rem;
+    border: 1px solid rgba(74,140,92,0.1);
+    position: relative;
+  }
+  .testi-card::before {
+    content: '"'; font-family: 'Playfair Display', serif;
+    font-size: 5rem; color: var(--mint);
+    position: absolute; top: -10px; left: 16px;
+    line-height: 1; opacity: 0.6;
+  }
+  .testi-text { font-size: 0.88rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 1rem; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .testi-name { font-weight: 700; font-size: 0.88rem; color: var(--forest); }
+  .testi-role { font-size: 0.75rem; color: #999; }
+
+  /* Map placeholder */
+  .map-placeholder {
+    border-radius: 16px; overflow: hidden; height: 250px;
+    background: linear-gradient(135deg, var(--mint), var(--sage));
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem; margin-top: 2rem;
+  }
+  .map-placeholder .map-icon { font-size: 3rem; }
+  .map-placeholder p { color: var(--forest); font-weight: 600; font-size: 0.9rem; }
+  .map-placeholder small { color: rgba(26,58,42,0.6); font-size: 0.78rem; }
+
+  /* Eco popup */
+  .eco-popup {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    background: var(--forest); color: white;
+    border-radius: 16px; padding: 1.25rem 1.5rem;
+    max-width: 300px; box-shadow: 0 8px 32px rgba(26,58,42,0.4);
+    transform: translateY(100px); opacity: 0;
+    animation: slideUp 0.5s 1.5s forwards;
+    border: 1px solid rgba(184,216,192,0.2);
+  }
+  @keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
+  .eco-popup-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .eco-popup-header h4 { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sun); }
+  .eco-popup p { font-size: 0.83rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
+  .eco-close { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 1.2rem; margin-left: auto; padding: 0; }
+  .eco-close:hover { color: white; }
+  .eco-new-tip { background: none; border: 1px solid rgba(184,216,192,0.3); color: var(--mint); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; margin-top: 0.75rem; width: 100%; transition: background 0.2s; }
+  .eco-new-tip:hover { background: rgba(184,216,192,0.1); }
+
+  /* Footer */
+  footer {
+    background: #0d1f14; padding: 3rem 2rem 1.5rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+  .footer-brand .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--mint); margin-bottom: 0.75rem; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { color: var(--sage); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.5rem; }
+  .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; cursor: pointer; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--mint); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; }
+  .footer-bottom p { font-size: 0.75rem; }
+
+  /* Tree counter */
+  .tree-counter {
+    position: fixed; bottom: 2rem; left: 2rem; z-index: 998;
+    background: rgba(45,90,61,0.95); backdrop-filter: blur(8px);
+    border-radius: 14px; padding: 0.875rem 1.25rem;
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(184,216,192,0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: slideUp 0.5s 2s both;
+  }
+  .tree-counter .tree-icon { font-size: 1.3rem; }
+  .tree-counter .tree-text { font-size: 0.75rem; }
+  .tree-counter .tree-text .tree-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--sun); display: block; }
+  .tree-counter .tree-text span:last-child { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .mission-vision { grid-template-columns: 1fr; }
+    .calc-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-image { min-height: 140px; }
+    .impact-strip { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .quiz-options { grid-template-columns: 1fr; }
+    .tree-counter { display: none; }
+    .eco-popup { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">🌿 Eco<span>Africa</span></a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About Us</a></li>
+    <li><a onclick="showPage('education')" id="nav-education">Learn</a></li>
+    <li><a onclick="showPage('projects')" id="nav-projects">Projects</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact" class="nav-cta">Get Involved</a></li>
+  </ul>
+</nav>
+
+<!-- ECO POPUP -->
+<div class="eco-popup" id="ecoPopup">
+  <div class="eco-popup-header">
+    <span>🌱</span>
+    <h4>Eco Tip of the Day</h4>
+    <button class="eco-close" onclick="document.getElementById('ecoPopup').style.display='none'">×</button>
+  </div>
+  <p id="ecoTipText">Carry a reusable water bottle. Uganda's plastics make up 30% of litter — one bottle saves ~156 plastic bottles per year.</p>
+  <button class="eco-new-tip" onclick="newTip()">✨ New Tip</button>
+</div>
+
+<!-- TREE COUNTER -->
+<div class="tree-counter">
+  <span class="tree-icon">🌳</span>
+  <div class="tree-text">
+    <span class="tree-num" id="treeCount">12,847</span>
+    <span>trees planted this year</span>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+
+  <!-- News ticker -->
+  <div class="news-banner">
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker">
+        <span>Uganda loses 100,000 ha of forest annually — action needed now</span>
+        <span>Lake Victoria faces record pollution levels in 2024</span>
+        <span>GreenRoots plants 500 trees in Wakiso District</span>
+        <span>New wetland protection law passes in Parliament</span>
+        <span>Youth clean-up campaign removes 2 tonnes of plastic from Kampala</span>
+        <span>Renewable energy coverage reaches 45% in rural Uganda</span>
+        <span>Uganda loses 100,000 ha of forest annually — action needed now</span>
+        <span>Lake Victoria faces record pollution levels in 2024</span>
+        <span>GreenRoots plants 500 trees in Wakiso District</span>
+        <span>New wetland protection law passes in Parliament</span>
+        <span>Youth clean-up campaign removes 2 tonnes of plastic from Kampala</span>
+        <span>Renewable energy coverage reaches 45% in rural Uganda</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-leaves">
+      <svg class="leaf-svg" style="top:10%;left:5%;width:200px;" viewBox="0 0 200 200"><ellipse cx="100" cy="100" rx="80" ry="40" fill="white" transform="rotate(-30 100 100)"/></svg>
+      <svg class="leaf-svg" style="top:60%;right:8%;width:160px;" viewBox="0 0 200 200"><ellipse cx="100" cy="100" rx="80" ry="40" fill="white" transform="rotate(20 100 100)"/></svg>
+      <svg class="leaf-svg" style="top:30%;right:30%;width:100px;" viewBox="0 0 200 200"><ellipse cx="100" cy="100" rx="80" ry="40" fill="white" transform="rotate(45 100 100)"/></svg>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="eyebrow">Eco Africa Uganda</div>
+        <h1>Building a <em>Greener</em> Future for Our Communities</h1>
+        <p>We're a youth-led environmental initiative working across Uganda to combat deforestation, plastic pollution, wetland destruction, and climate change — one community at a time.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="showPage('contact')">Join the Movement</button>
+          <button class="btn-outline" onclick="showPage('education')">Learn More</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="icon">🌳</div>
+          <div class="num">12.8K</div>
+          <div class="label">Trees planted across Uganda</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon">🧹</div>
+          <div class="num">2.4T</div>
+          <div class="label">Tonnes of waste collected</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon">👥</div>
+          <div class="num">3,200</div>
+          <div class="label">Community volunteers active</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon">🏫</div>
+          <div class="num">47</div>
+          <div class="label">Schools reached in 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges -->
+  <section class="challenges">
+    <div class="section-header">
+      <span class="tag">The Problem</span>
+      <h2>Key Environmental Challenges in Uganda</h2>
+      <p>Uganda's natural beauty is under threat. Understanding these challenges is the first step toward solving them.</p>
+    </div>
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="icon">🏭</div>
+        <h3>Pollution</h3>
+        <p>Industrial and household waste pollutes air, water, and soil across Uganda's urban and rural areas.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">🪓</div>
+        <h3>Deforestation</h3>
+        <p>Uganda loses over 100,000 hectares of forest each year to charcoal burning and agricultural expansion.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">🧴</div>
+        <h3>Plastic Waste</h3>
+        <p>Single-use plastics clog waterways and drainage channels, worsening flooding in Kampala and beyond.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">🌡️</div>
+        <h3>Climate Change</h3>
+        <p>Erratic rainfall and rising temperatures threaten food security for millions of smallholder farmers.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">💧</div>
+        <h3>Wetland Destruction</h3>
+        <p>Over 60% of Uganda's wetlands have been degraded, threatening biodiversity and water filtration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer on home -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">🌿 Eco Africa Uganda</div>
+          <p>A youth-led movement building sustainable communities across Uganda through education, action, and advocacy.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('about')">About Us</a></li>
+            <li><a onclick="showPage('education')">Learn Sustainability</a></li>
+            <li><a onclick="showPage('projects')">Community Projects</a></li>
+            <li><a onclick="showPage('contact')">Get Involved</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">📧 info@Eco Africa.ug</a></li>
+            <li><a href="#">📞 +256 700 123 456</a></li>
+            <li><a href="#">📍 Kampala, Uganda</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Eco Uganda. All rights reserved.</p>
+        <p>Built with 💚 for the planet</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<div id="page-about" class="page">
+  <section class="about-hero">
+    <h1>About GreenRoots</h1>
+    <p>We are a community of passionate young Ugandans committed to healing our environment and building a sustainable future.</p>
+  </section>
+
+  <div class="about-content">
+    <!-- Mission & Vision -->
+    <div class="mission-vision">
+      <div class="mv-card mission">
+        <div class="mv-label">Our Mission</div>
+        <h3>Protect. Restore. Sustain.</h3>
+        <p>To mobilize communities across Uganda in taking meaningful action against environmental degradation — through education, tree planting, waste management, and sustainable farming practices — ensuring a healthy planet for future generations.</p>
+      </div>
+      <div class="mv-card vision">
+        <div class="mv-label">Our Vision</div>
+        <h3>A Thriving Uganda in Harmony with Nature</h3>
+        <p>We envision a Uganda where every community actively protects its natural resources, where young people lead environmental solutions, and where sustainable practices are embedded in daily life from households to government policy.</p>
+      </div>
+    </div>
+
+    <!-- Goals -->
+    <div class="goals-section">
+      <h2>Our Goals</h2>
+      <div class="goals-list">
+        <div class="goal-item">
+          <div class="gi">♻️</div>
+          <div>
+            <h4>Promote Recycling</h4>
+            <p>Establish community recycling hubs in 20 districts and educate 50,000 households on waste separation.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="gi">🌳</div>
+          <div>
+            <h4>Encourage Tree Planting</h4>
+            <p>Plant 50,000 indigenous trees annually with community groups, schools, and local governments.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="gi">🌾</div>
+          <div>
+            <h4>Teach Sustainable Farming</h4>
+            <p>Train 5,000 farmers in agroforestry, composting, and climate-smart agriculture techniques.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="gi">🧴</div>
+          <div>
+            <h4>Reduce Plastic Use</h4>
+            <p>Campaign to eliminate single-use plastics in 10 urban markets and replace with biodegradable alternatives.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="gi">💧</div>
+          <div>
+            <h4>Protect Water Sources</h4>
+            <p>Restore riparian vegetation along rivers and lakes, and monitor water quality in 30 communities.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="gi">📚</div>
+          <div>
+            <h4>Environmental Education</h4>
+            <p>Integrate sustainability curriculum into 100 schools across Uganda by 2026.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">🧑🏾</div>
+          <h4>David Ssekandi</h4>
+          <div class="role">Executive Director</div>
+          <p>Environmental science graduate with 8 years in community conservation across East Africa.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩🏾</div>
+          <h4>Aisha Nantume</h4>
+          <div class="role">Education Lead</div>
+          <p>Passionate educator developing sustainability curriculum for Ugandan schools and youth groups.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">🧑🏿</div>
+          <h4>Peter Okello</h4>
+          <div class="role">Community Mobilizer</div>
+          <p>Works directly with village councils and local leaders to drive grassroots environmental action.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩🏽</div>
+          <h4>Grace Tendo</h4>
+          <div class="role">Partnerships Director</div>
+          <p>Builds alliances with NGOs, government agencies, and businesses to scale our impact.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <h2>Our Journey</h2>
+      <div class="timeline-track">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2019</div>
+          <h4>GreenRoots Founded</h4>
+          <p>Started by 5 university students after a field trip to Mabira Forest revealed alarming deforestation rates.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2020</div>
+          <h4>First Tree Planting Drive</h4>
+          <p>Planted 1,000 trees in Wakiso District with support from local community leaders and 200 volunteers.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2021</div>
+          <h4>School Outreach Begins</h4>
+          <p>Launched environmental clubs in 12 Kampala schools, reaching 4,000 students with sustainability education.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2022</div>
+          <h4>National Recognition</h4>
+          <p>Awarded the National Environmental Award by NEMA Uganda for outstanding community mobilization work.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2023</div>
+          <h4>Wetland Restoration Project</h4>
+          <p>Partnered with Wetlands Management Department to restore 50 acres of degraded wetland in Mukono.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2024</div>
+          <h4>10,000 Trees Milestone</h4>
+          <p>Celebrated planting our 10,000th tree — a symbol of the power of community-led environmental action.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p>© 2025 GreenRoots Uganda</p>
+        <p>Built with 💚 for the planet</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<div id="page-education" class="page">
+  <section class="edu-hero">
+    <h1>Learn Sustainability</h1>
+    <p>Expand your knowledge, take our quizzes, calculate your carbon footprint, and become an environmental champion.</p>
+  </section>
+
+  <div class="edu-content">
+    <!-- Did You Know -->
+    <div class="dyk-banner">
+      <div class="dyk-icon">💡</div>
+      <div>
+        <h3>Did You Know?</h3>
+        <p id="dykText">Uganda's forests absorb approximately 40 million tonnes of CO₂ each year — protecting them is our most powerful climate tool.</p>
+      </div>
+      <button class="dyk-next" onclick="newFact()">Next Fact →</button>
+    </div>
+
+    <!-- Topics -->
+    <div class="section-header" style="margin-bottom:2rem;">
+      <span class="tag">Topics</span>
+      <h2>Environmental Education</h2>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">🌡️</div>
+          <div><h3>Climate Change Basics</h3><div class="sub">Understanding global warming</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Climate change refers to long-term shifts in global temperatures and weather patterns. Human activities — especially burning fossil fuels — have accelerated these changes, causing more floods, droughts, and extreme weather in Uganda.</p>
+          <div class="topic-tags"><span class="tag-pill">Greenhouse gases</span><span class="tag-pill">Temperature rise</span><span class="tag-pill">Uganda impact</span></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">☀️</div>
+          <div><h3>Renewable Energy</h3><div class="sub">Powering Uganda sustainably</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Uganda has enormous potential for solar, hydropower, and wind energy. Switching from charcoal to clean energy reduces deforestation, cuts air pollution, and saves families money on fuel costs over time.</p>
+          <div class="topic-tags"><span class="tag-pill">Solar power</span><span class="tag-pill">Hydropower</span><span class="tag-pill">Biogas</span></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">🗑️</div>
+          <div><h3>Waste Management</h3><div class="sub">Reduce, reuse, recycle</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Proper waste management prevents disease, reduces greenhouse gases from landfills, and creates economic opportunities. The 3Rs — Reduce, Reuse, Recycle — form the foundation of a zero-waste lifestyle.</p>
+          <div class="topic-tags"><span class="tag-pill">Composting</span><span class="tag-pill">Recycling</span><span class="tag-pill">Zero waste</span></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">🌾</div>
+          <div><h3>Sustainable Agriculture</h3><div class="sub">Feeding communities responsibly</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Sustainable farming practices like agroforestry, crop rotation, and composting produce more food while restoring soil health, reducing chemical use, and protecting water sources from agricultural runoff.</p>
+          <div class="topic-tags"><span class="tag-pill">Agroforestry</span><span class="tag-pill">Composting</span><span class="tag-pill">Crop rotation</span></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">💧</div>
+          <div><h3>Water Conservation</h3><div class="sub">Protecting Uganda's blue gold</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Clean water is life. Protecting wetlands, avoiding stream pollution, harvesting rainwater, and fixing leaks are practical steps every Ugandan can take to conserve this precious and diminishing resource.</p>
+          <div class="topic-tags"><span class="tag-pill">Rainwater harvesting</span><span class="tag-pill">Wetlands</span><span class="tag-pill">Pollution</span></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">🦋</div>
+          <div><h3>Biodiversity Protection</h3><div class="sub">Every species matters</div></div>
+        </div>
+        <div class="topic-body">
+          <p>Uganda hosts over 50% of Africa's mountain gorillas and thousands of plant species. Protecting biodiversity ensures ecosystem services — clean air, water, pollination, and medicine — for all communities.</p>
+          <div class="topic-tags"><span class="tag-pill">Wildlife</span><span class="tag-pill">Ecosystems</span><span class="tag-pill">Conservation</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carbon Calculator -->
+    <div class="calculator">
+      <div class="calc-header">
+        <h2>🧮 Carbon Footprint Calculator</h2>
+        <p>Estimate your personal carbon footprint and discover ways to reduce it.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Transport (per week)</label>
+          <select id="transport">
+            <option value="2">Walk / Bicycle</option>
+            <option value="20" selected>Boda-boda / Minibus</option>
+            <option value="50">Private car</option>
+            <option value="150">Long-distance travel</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Cooking fuel</label>
+          <select id="fuel">
+            <option value="5">Solar / Biogas</option>
+            <option value="30" selected>Firewood</option>
+            <option value="20">LPG / Kerosene</option>
+            <option value="10">Electric stove</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Meat consumption</label>
+          <select id="meat">
+            <option value="5">None (vegetarian)</option>
+            <option value="20" selected>Occasionally (1-2x/week)</option>
+            <option value="50">Daily</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Plastic bags used (per week)</label>
+          <input type="number" id="plastic" value="5" min="0" max="50">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcCarbon()">Calculate My Footprint</button>
+      <div class="calc-result" id="calcResult">
+        <div class="result-num" id="resultNum">0</div>
+        <div class="result-unit">kg CO₂ equivalent per month</div>
+        <div class="result-tip" id="resultTip"></div>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="quiz-section">
+      <h2>🎓 Test Your Knowledge</h2>
+      <p>Answer environmental questions and see how eco-literate you are!</p>
+      <div class="quiz-progress" id="quizProgress">Question 1 of 6</div>
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <button class="quiz-next" id="quizNext" onclick="nextQuestion()">Next Question →</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p>© 2025 GreenRoots Uganda</p><p>Built with 💚 for the planet</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<div id="page-projects" class="page">
+  <section class="proj-hero">
+    <h1>Community Projects</h1>
+    <p>Real action happening on the ground across Uganda — led by passionate communities.</p>
+  </section>
+
+  <div class="proj-content">
+    <!-- Impact strip -->
+    <div class="impact-strip">
+      <div class="impact-box">
+        <div class="num">12,847</div>
+        <div class="lbl">Trees planted</div>
+      </div>
+      <div class="impact-box">
+        <div class="num">2.4T</div>
+        <div class="lbl">Waste collected</div>
+      </div>
+      <div class="impact-box">
+        <div class="num">50 ac</div>
+        <div class="lbl">Wetland restored</div>
+      </div>
+      <div class="impact-box">
+        <div class="num">47</div>
+        <div class="lbl">Schools reached</div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-image" style="background:linear-gradient(135deg,#1a3a2a,#2d5a3d);">🌳</div>
+        <div class="project-body">
+          <span class="proj-badge">Active • Tree Planting</span>
+          <h3>Mabira Forest Restoration Campaign</h3>
+          <p>Working with local communities and the National Forestry Authority to restore degraded areas of Mabira Forest through native species planting and community forest management training.</p>
+          <div class="proj-meta">
+            <span>📍 <strong>Buikwe District</strong></span>
+            <span>🌳 <strong>5,000 trees</strong> planted</span>
+            <span>👥 <strong>320 volunteers</strong></span>
+          </div>
+          <div class="proj-actions">
+            <button class="btn-sm green" onclick="showPage('contact')">Volunteer Now</button>
+            <button class="btn-sm outline-green" onclick="showPage('contact')">Donate</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image" style="background:linear-gradient(135deg,#4a8c5c,#1a3a2a);">🧹</div>
+        <div class="project-body">
+          <span class="proj-badge">Monthly • Community Cleanup</span>
+          <h3>Kampala Clean Streets Initiative</h3>
+          <p>Monthly community cleanups in Kampala's 5 divisions — collecting plastic waste, clearing drainage channels, and distributing reusable bags to market vendors and households.</p>
+          <div class="proj-meta">
+            <span>📍 <strong>Kampala City</strong></span>
+            <span>🧴 <strong>2.4 tonnes</strong> collected</span>
+            <span>👥 <strong>800+ participants</strong></span>
+          </div>
+          <div class="proj-actions">
+            <button class="btn-sm green" onclick="showPage('contact')">Join Next Cleanup</button>
+            <button class="btn-sm outline-green">See Schedule</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image" style="background:linear-gradient(135deg,#3d6b4f,#2a4a35);">📚</div>
+        <div class="project-body">
+          <span class="proj-badge">Ongoing • Education</span>
+          <h3>Green Schools Environmental Clubs</h3>
+          <p>Establishing and supporting environmental clubs in primary and secondary schools across Uganda, providing curriculum materials, teacher training, and school garden setups.</p>
+          <div class="proj-meta">
+            <span>📍 <strong>Nationwide</strong></span>
+            <span>🏫 <strong>47 schools</strong> enrolled</span>
+            <span>🎓 <strong>12,000+ students</strong></span>
+          </div>
+          <div class="proj-actions">
+            <button class="btn-sm green" onclick="showPage('contact')">Register Your School</button>
+            <button class="btn-sm outline-green">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image" style="background:linear-gradient(135deg,#1a4a3a,#0d2a1a);">💧</div>
+        <div class="project-body">
+          <span class="proj-badge">Active • Wetlands</span>
+          <h3>Mukono Wetland Conservation</h3>
+          <p>Restoring 50 acres of degraded wetland in Mukono District through invasive species removal, native plant restoration, and training local fishermen in sustainable fishing practices.</p>
+          <div class="proj-meta">
+            <span>📍 <strong>Mukono District</strong></span>
+            <span>🌿 <strong>50 acres</strong> restored</span>
+            <span>🐟 <strong>3 fish species</strong> returning</span>
+          </div>
+          <div class="proj-actions">
+            <button class="btn-sm green" onclick="showPage('contact')">Get Involved</button>
+            <button class="btn-sm outline-green">View Progress</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image" style="background:linear-gradient(135deg,#5c7a4a,#3a4a2a);">🥬</div>
+        <div class="project-body">
+          <span class="proj-badge">New • Urban Farming</span>
+          <h3>Nakawa Urban Garden Project</h3>
+          <p>Transforming unused urban spaces into productive community gardens that provide fresh vegetables, teach composting, and create green spaces in one of Kampala's busiest divisions.</p>
+          <div class="proj-meta">
+            <span>📍 <strong>Nakawa, Kampala</strong></span>
+            <span>🥕 <strong>8 gardens</strong> active</span>
+            <span>🏘️ <strong>150 families</strong> served</span>
+          </div>
+          <div class="proj-actions">
+            <button class="btn-sm green" onclick="showPage('contact')">Adopt a Plot</button>
+            <button class="btn-sm outline-green">Donate Seeds</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Events -->
+    <div class="events-section">
+      <h2>Upcoming Events</h2>
+      <div class="events-list">
+        <div class="event-item">
+          <div class="event-date"><div class="day">15</div><div class="month">Jun</div></div>
+          <div class="event-info">
+            <h4>Community Tree Planting Day — Wakiso</h4>
+            <p>Join 200+ volunteers for a mass tree planting in Wakiso District. Gloves and seedlings provided.</p>
+            <div class="loc">📍 Wakiso District Headquarters</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date"><div class="day">22</div><div class="month">Jun</div></div>
+          <div class="event-info">
+            <h4>Kampala Monthly Cleanup</h4>
+            <p>Our regular Kampala cleanup — wear comfortable clothes and bring gloves if you have them.</p>
+            <div class="loc">📍 Nakasero Market, Kampala</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date"><div class="day">5</div><div class="month">Jul</div></div>
+          <div class="event-info">
+            <h4>Sustainable Farming Workshop</h4>
+            <p>Free 1-day training on composting, agroforestry, and natural pest management for smallholder farmers.</p>
+            <div class="loc">📍 Jinja Agricultural Centre</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date"><div class="day">20</div><div class="month">Jul</div></div>
+          <div class="event-info">
+            <h4>Youth Environmental Summit 2025</h4>
+            <p>Annual youth summit bringing together environmental champions from across East Africa for 2 days of learning and networking.</p>
+            <div class="loc">📍 Kampala Serena Hotel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation bar -->
+    <div class="donation-bar">
+      <div class="d-text">
+        <h3>💚 Support Our Work</h3>
+        <p>Your donation plants trees, funds school programs, and protects wetlands.</p>
+      </div>
+      <button class="d-btn" onclick="showPage('contact')">Donate Now</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p>© 2025 GreenRoots Uganda</p><p>Built with 💚 for the planet</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div id="page-contact" class="page">
+  <section class="contact-hero">
+    <h1>Get Involved</h1>
+    <p>Volunteer, donate, partner with us, or simply reach out. Every hand helps heal our planet.</p>
+  </section>
+
+  <div class="contact-content">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info">
+        <h2>Reach Us</h2>
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div>
+            <h4>Email Us</h4>
+            <p>info@greenroots.ug<br>volunteers@greenroots.ug</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>Call / WhatsApp</h4>
+            <p>+256 703351009<br>+256 769429698</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <h4>Our Office</h4>
+            <p>Plot 45, Bukoto Street<br>Kampala, Uganda<br>Mon–Fri: 8am – 5pm EAT</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💳</div>
+          <div>
+            <h4>Donate via Mobile Money</h4>
+            <p>MTN MoMo: 0769429698<br>Airtel Money: 0703351009<br>Prompt: "GreenRoots Donation"</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a class="social-btn" href="#" title="Facebook">📘</a>
+          <a class="social-btn" href="#" title="Twitter/X">🐦</a>
+          <a class="social-btn" href="#" title="Instagram">📸</a>
+          <a class="social-btn" href="#" title="YouTube">▶️</a>
+          <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        </div>
+        <div class="map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <p>GreenRoots Uganda HQ</p>
+          <small>Plot 45, Bukoto Street, Kampala</small>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form" id="contactFormBox">
+        <h2>Send Us a Message</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Kyle">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Onyango">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="kylenoel46@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+256 703351009">
+        </div>
+        <div class="form-group">
+          <label>I want to...</label>
+          <select>
+            <option>Volunteer for a project</option>
+            <option>Partner with GreenRoots</option>
+            <option>Make a donation</option>
+            <option>Subscribe to newsletter</option>
+            <option>Register my school</option>
+            <option>General inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us how you'd like to get involved or any questions you have..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send Message 🌿</button>
+        <div class="form-success" id="formSuccess">
+          <div class="check">✅</div>
+          <h3>Message Received!</h3>
+          <p>Thank you for reaching out. Our team will get back to you within 24 hours. Together we grow 🌱</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div id="faqList">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How can I volunteer with GreenRoots? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Fill out the contact form above or WhatsApp us at +256 700 123 456. We welcome volunteers of all ages and backgrounds. Most events require just 2–4 hours of your time on a weekend.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is GreenRoots registered? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes. GreenRoots Uganda is a registered NGO with the NGO Bureau of Uganda (Reg. No. NGO/1245/2020) and a member of the Uganda National NGO Forum. All donations are tax-deductible.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How do I get my school involved? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Contact our Education Lead Aisha Nantume at schools@greenroots.ug. We provide free training, curriculum materials, and school garden kits for registered schools. Over 47 schools have already joined!</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Can companies or organizations partner with you? <span class="faq-icon">+</span></button>
+          <div class="faq-a">Absolutely. We welcome corporate partnerships for tree planting days, staff volunteering, sponsorships, and co-branded campaigns. Contact partnerships@greenroots.ug for our partnership packages.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How is my donation used? <span class="faq-icon">+</span></button>
+          <div class="faq-a">75% of all donations go directly to field projects (tree planting, cleanups, wetland restoration). 15% covers educational materials and school programs. 10% covers administration and operations. We publish annual impact reports on our website.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <h2>Success Stories</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-text">Joining GreenRoots changed my life. I went from a student who didn't think much about the environment to someone who runs the eco-club at my school and has trained 300 fellow students in sustainable practices.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">🧑🏾</div>
+            <div>
+              <div class="testi-name">Brian Kato</div>
+              <div class="testi-role">Student Volunteer, Kampala</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-text">After the GreenRoots farming workshop, I switched to composting and crop rotation on my 2-acre farm. My yields improved by 30% and I no longer need expensive chemical fertilizers. A total game-changer.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👩🏾</div>
+            <div>
+              <div class="testi-name">Mary Namutebi</div>
+              <div class="testi-role">Smallholder Farmer, Jinja</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-text">Our company partnered with GreenRoots for a staff tree-planting day. Not only did we plant 500 trees, but our employees came back energized and more engaged. We've now made it an annual tradition.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">🧑🏿</div>
+            <div>
+              <div class="testi-name">Robert Ssempala</div>
+              <div class="testi-role">HR Director, Kampala FMCG</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">🌿 GreenRoots Uganda</div>
+          <p>Protecting Uganda's environment through community action, education, and advocacy for a sustainable future.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('about')">About Us</a></li>
+            <li><a onclick="showPage('education')">Learn Sustainability</a></li>
+            <li><a onclick="showPage('projects')">Community Projects</a></li>
+            <li><a onclick="showPage('contact')">Get Involved</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Annual Reports</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 GreenRoots Uganda. NGO Reg. NGO/1245/2020</p>
+        <p>Built with 💚 for the planet</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ── PAGE NAVIGATION by Kyle Noel Onyango ──
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0,0);
+    if (id === 'education') initQuiz();
+  }
+
+  // ── ECO TIPS by Kyle Noel Onyango ──
+  const ecoTips = [
+    "Carry a reusable water bottle. Uganda's plastics make up 30% of litter — one bottle saves ~156 plastic bottles per year.",
+    "Switch off lights when leaving a room. Lighting accounts for up to 15% of household electricity bills.",
+    "Compost your food scraps. Kitchen waste makes rich fertilizer and keeps methane out of landfills.",
+    "Buy local produce. Local food travels shorter distances, reducing fuel emissions and supporting Ugandan farmers.",
+    "Plant a tree this weekend. Trees absorb CO₂, provide shade, and prevent soil erosion.",
+    "Avoid single-use plastic bags. Bring a reusable bag when shopping — it takes 500 years for plastic to decompose.",
+    "Harvest rainwater from your roof. A simple barrel can collect hundreds of litres per season.",
+    "Use energy-efficient LED bulbs. They use 75% less electricity and last 25 times longer than incandescent bulbs.",
+  ];
+  let tipIdx = 0;
+  function newTip() {
+    tipIdx = (tipIdx + 1) % ecoTips.length;
+    document.getElementById('ecoTipText').textContent = ecoTips[tipIdx];
+  }
+
+  // ── DID YOU KNOW SECTION by Kyle Noel Onyango ──
+  const facts = [
+    "Uganda's forests absorb approximately 40 million tonnes of CO₂ each year — protecting them is our most powerful climate tool.",
+    "Lake Victoria is the world's largest tropical lake and source of the River Nile — yet it loses 10,000 fish species annually to pollution.",
+    "Uganda has lost over 60% of its wetlands in the last 50 years, threatening water supply for millions.",
+    "If Uganda achieves 30% solar energy by 2030, it could avoid planting 20 million trees' worth of carbon emissions.",
+    "Composting just 1kg of food waste prevents 0.5kg of methane — a greenhouse gas 25x more potent than CO₂.",
+    "Uganda's goal is to restore 2.5 million hectares of degraded land by 2030 under the Bonn Challenge.",
+    "Cycling to work instead of driving saves approximately 1.5kg of CO₂ per 10km travelled.",
+    "Wetlands filter up to 90% of water pollutants naturally — making them Uganda's most important water treatment system.",
+  ];
+  let factIdx = 0;
+  function newFact() {
+    factIdx = (factIdx + 1) % facts.length;
+    document.getElementById('dykText').textContent = facts[factIdx];
+  }
+
+  // ── CARBON CALCULATOR Section By Kyle Noel Onyango ──
+  function calcCarbon() {
+    const t = parseInt(document.getElementById('transport').value);
+    const f = parseInt(document.getElementById('fuel').value);
+    const m = parseInt(document.getElementById('meat').value);
+    const p = parseInt(document.getElementById('plastic').value) * 0.5;
+    const weekly = t + f + m + p;
+    const monthly = Math.round(weekly * 4.3);
+    document.getElementById('resultNum').textContent = monthly;
+    const tips = monthly < 100
+      ? "🌟 Excellent! Your footprint is well below average. Keep up the great habits and inspire others around you."
+      : monthly < 250
+      ? "👍 Good effort! A few changes — like reducing meat consumption or switching to cleaner cooking fuel — could lower your footprint significantly."
+      : "⚠️ Your footprint is above average. Consider switching to public transport, reducing meat, and using a cleaner cooking fuel like biogas or LPG.";
+    document.getElementById('resultTip').textContent = tips;
+    const r = document.getElementById('calcResult');
+    r.style.display = 'block';
+  }
+
+  // ── QUIZ By Kyle Noel Onyango ──
+  const questions = [
+    { q: "What percentage of Uganda's wetlands have been degraded?", opts: ["20%", "40%", "Over 60%", "80%"], ans: 2, explanation: "Over 60% of Uganda's wetlands have been destroyed or degraded — threatening water filtration, biodiversity, and communities that rely on them." },
+    { q: "Which gas makes up the largest share of greenhouse gas emissions globally?", opts: ["Methane (CH₄)", "Nitrous oxide (N₂O)", "Carbon dioxide (CO₂)", "Water vapour"], ans: 2, explanation: "CO₂ accounts for about 76% of global greenhouse gas emissions, primarily from burning fossil fuels and deforestation." },
+    { q: "What does 'agroforestry' mean?", opts: ["Farming in forests only", "Growing trees and crops together", "Using chemical fertilizers", "Clearing land for farming"], ans: 1, explanation: "Agroforestry combines trees with crops or livestock, improving soil health, providing shade, increasing biodiversity, and boosting farm income." },
+    { q: "How many years does it take for a plastic bag to decompose?", opts: ["10–20 years", "50–100 years", "About 500 years", "Plastic never decomposes"], ans: 2, explanation: "Most plastic bags take 400–500 years to break down into microplastics — they don't truly biodegrade. Choosing reusable alternatives makes a big difference." },
+    { q: "Which renewable energy source has the most potential in Uganda?", opts: ["Nuclear power", "Tidal energy", "Solar energy", "Geothermal"], ans: 2, explanation: "Uganda receives 5–6 hours of strong sunshine daily and sits near the equator — making solar power one of the most abundant and affordable clean energy options." },
+    { q: "What is 'carbon sequestration'?", opts: ["Burning carbon fuels", "Capturing and storing CO₂ from the atmosphere", "Measuring pollution levels", "A type of renewable energy"], ans: 1, explanation: "Carbon sequestration is the process of capturing CO₂ and storing it — naturally in forests, soils, and wetlands, or artificially using technology. Trees are nature's sequestration machines!" },
+  ];
+
+  let currentQ = 0, score = 0, answered = false;
+
+  function initQuiz() {
+    currentQ = 0; score = 0; answered = false;
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    if (currentQ >= questions.length) {
+      document.getElementById('quizQ').textContent = `Quiz complete! You scored ${score} out of ${questions.length}. ${score >= 5 ? '🌟 Eco Champion!' : score >= 3 ? '🌱 Good effort!' : '📚 Keep learning!'}`;
+      document.getElementById('quizOptions').innerHTML = '<button class="quiz-opt" style="grid-column:span 2" onclick="initQuiz()">Restart Quiz 🔄</button>';
+      document.getElementById('quizFeedback').className = 'quiz-feedback';
+      document.getElementById('quizNext').className = 'quiz-next';
+      document.getElementById('quizProgress').textContent = `Final Score: ${score}/${questions.length}`;
+      return;
+    }
+    const q = questions[currentQ];
+    document.getElementById('quizProgress').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+    document.getElementById('quizQ').textContent = q.q;
+    document.getElementById('quizOptions').innerHTML = q.opts.map((o, i) =>
+      `<button class="quiz-opt" onclick="answer(${i})">${o}</button>`
+    ).join('');
+    document.getElementById('quizFeedback').className = 'quiz-feedback';
+    document.getElementById('quizNext').className = 'quiz-next';
+    answered = false;
+  }
+
+  function answer(i) {
+    if (answered) return;
+    answered = true;
+    const q = questions[currentQ];
+    const opts = document.querySelectorAll('.quiz-opt');
+    opts.forEach((o, idx) => {
+      if (idx === q.ans) o.classList.add('correct');
+      else if (idx === i) o.classList.add('wrong');
+    });
+    const fb = document.getElementById('quizFeedback');
+    if (i === q.ans) {
+      score++;
+      fb.textContent = '✅ Correct! ' + q.explanation;
+      fb.className = 'quiz-feedback show correct';
+    } else {
+      fb.textContent = '❌ Not quite. ' + q.explanation;
+      fb.className = 'quiz-feedback show wrong';
+    }
+    document.getElementById('quizNext').className = 'quiz-next show';
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    renderQuestion();
+  }
+
+  // ── FAQ By Kyle Noel Onyango ──
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+  }
+
+  // ── FORM By Kyle Onyango ──
+  function submitForm() {
+    const inputs = document.querySelectorAll('#contactFormBox input, #contactFormBox textarea, #contactFormBox select');
+    let valid = true;
+    inputs.forEach(i => { if (!i.value.trim()) { valid = false; i.style.borderColor = '#f44336'; } else { i.style.borderColor = ''; } });
+    if (!valid) { alert('Please fill in all fields before submitting.'); return; }
+    document.querySelector('.contact-form h2').style.display = 'none';
+    document.querySelector('.form-row').style.display = 'none';
+    inputs.forEach(i => i.closest('.form-group') && (i.closest('.form-group').style.display = 'none'));
+    document.querySelector('.form-submit').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // ── TREE COUNTER ANIMATION By Kyle Noel Onyango ──
+  let treeBase = 12847;
+  setInterval(() => {
+    treeBase += Math.floor(Math.random() * 3);
+    document.getElementById('treeCount').textContent = treeBase.toLocaleString();
+  }, 5000);
+
+  // Init quiz on load if on education page By Kyle Noel Onyango-
+  window.addEventListener('load', () => {
+    if (document.getElementById('page-education').classList.contains('active')) initQuiz();
+  });
+</script>
+</body>
+</html>
